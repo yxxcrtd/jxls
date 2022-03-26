@@ -33,7 +33,7 @@ public class TestController {
 
         map.put("list", list);
 
-        return new ModelAndView(new JxlsView("templates/test.xls", "output"), map);
+        return new ModelAndView(new JxlsView("templates/test.xlsx", "output"), map);
     }
 
 }

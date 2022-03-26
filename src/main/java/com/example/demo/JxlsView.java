@@ -9,6 +9,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jxls.common.Context;
+import org.jxls.util.JxlsHelper;
 import org.springframework.web.servlet.view.AbstractView;
 
 public class JxlsView extends AbstractView {
@@ -32,10 +34,12 @@ public class JxlsView extends AbstractView {
     protected void renderMergedOutputModel(Map<String, Object> map, HttpServletRequest request, HttpServletResponse response) throws Exception {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(templatePath)) {
             response.setContentType(getContentType());
-            response.setHeader("content-disposition", "attachment;filename=" + exportFileName + ".xls");
+            response.setHeader("content-disposition", "attachment;filename=" + exportFileName + ".xlsx");
             ServletOutputStream os = response.getOutputStream();
 
-            JxlsUtils.exportExcel(templatePath, os, map);
+            Context content = new Context();
+            content.putVar("users", map);
+            JxlsHelper.getInstance().processTemplate(is, os, content);
             
             os.close();
         }
