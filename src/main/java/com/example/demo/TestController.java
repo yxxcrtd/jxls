@@ -14,6 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class TestController {
 
+    @GetMapping("1")
+    public ModelAndView test1() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "张三");
+        return new ModelAndView(new JxlsView("templates/1.xlsx", "1"), map);
+    }
+
     @GetMapping("simple")
     public ModelAndView test() {
         Map<String, Object> map = new HashMap<>();
