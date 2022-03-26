@@ -31,7 +31,7 @@ public class TestController {
         user2.setAge(12);
         list.add(user2);
 
-        map.put("list", list);
+        map.put("users", list);
 
         return new ModelAndView(new JxlsView("templates/test.xlsx", "output"), map);
     }
