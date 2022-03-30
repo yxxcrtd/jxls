@@ -6,7 +6,17 @@ public class User {
 
     private String name;
 
-    private int age;
+    private Double money;
+
+    public User() {
+        
+    }
+
+    public User(String id, String name, Double money) {
+        this.id = id;
+        this.name = name;
+        this.money = money;
+    }
 
     public String getId() {
         return id;
@@ -24,12 +34,12 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Double getMoney() {
+        return money;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setMoney(Double money) {
+        this.money = money;
     }
-
+    
 }
