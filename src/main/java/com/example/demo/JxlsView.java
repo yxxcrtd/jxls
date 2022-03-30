@@ -37,8 +37,15 @@ public class JxlsView extends AbstractView {
             response.setHeader("content-disposition", "attachment;filename=" + exportFileName + ".xlsx");
             ServletOutputStream os = response.getOutputStream();
 
+            
+            // test/1
             Context content = new Context();
-            content.putVar("users", map);
+            content.putVar("user", map);
+
+            // test/2
+            // Context content = PoiTransformer.createInitialContext();
+            // content.putVar("list", map);
+
             JxlsHelper.getInstance().processTemplate(is, os, content);
             
             os.close();
